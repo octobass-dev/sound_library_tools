@@ -3,25 +3,25 @@ The tool creates a complete workflow from finding free video sources to producin
 # Core Features:
 1. Video Library Discovery & Download
 - Curated Sources: 10+ pre-configured speech-heavy video sources including:
-- C-SPAN (political speeches)
-- TED Talks (presentations)
-- Public domain movies (dialogues)
-- Prelinger Archives (advertisements, educational content)
-- TV news broadcasts
-- Political campaign ads
-- NASA technical videos
+    - C-SPAN (political speeches)
+    - TED Talks (presentations)
+    - Public domain movies (dialogues)
+    - Prelinger Archives (advertisements, educational content)
+    - TV news broadcasts
+    - Political campaign ads
+    - NASA technical videos
 - Download Methods:
-- Internet Archive collections via ia CLI
-- YouTube playlists via yt-dlp
-- Automatic filtering by duration and quality
+    - Internet Archive collections via ia CLI
+    - YouTube playlists via yt-dlp
+    - Automatic filtering by duration and quality
 
 2. YouTube Processing Pipeline
 - Downloads audio using yt-dlp
 - Downloads video for later use
 - Separates vocals using Demucs (3 models available):
-- htdemucs: Standard 4-stem (vocals, drums, bass, other)
-- htdemucs_ft: Fine-tuned version
-- htdemucs_6s: Extended 6-stem (adds guitar, piano)
+    - htdemucs: Standard 4-stem (vocals, drums, bass, other)
+    - htdemucs_ft: Fine-tuned version
+    - htdemucs_6s: Extended 6-stem (adds guitar, piano)
 - Creates instrumental track from non-vocal stems
 
 3. Vocal Replacement
@@ -36,27 +36,27 @@ The tool creates a complete workflow from finding free video sources to producin
 - Combines new vocals with instrumental track
 - Creates final mixed output
 - Advanced Features:
-- Library Management
-- Statistics analysis (count, size, duration by source)
-- Corrupted file detection and cleanup
-- Duration-based filtering
-- Preview frame extraction
-- Batch Processing
-- Process entire YouTube playlists
-- Process URLs from text file
-- Automatic error handling and logging
+    - Library Management
+    - Statistics analysis (count, size, duration by source)
+    - Corrupted file detection and cleanup
+    - Duration-based filtering
+    - Preview frame extraction
+    - Batch Processing
+    - Process entire YouTube playlists
+    - Process URLs from text file
+    - Automatic error handling and logging
 - Quality Control
-- Video validation (streams, duration, resolution)
-- Audio sync verification
-- Detailed validation reports
-- Usage Examples:
+    - Video validation (streams, duration, resolution)
+    - Audio sync verification
+    - Detailed validation reports
 
-# Quick start - full pipeline
+## Usage Examples:
+### Quick start - full pipeline
 ```
 python video_library_tool.py full-pipeline "https://youtube.com/watch?v=dQw4w9WgXcQ" --max-items 30
 ```
 
-# Step-by-step
+### Step-by-step
 ```
 python video_library_tool.py list-sources
 python video_library_tool.py setup-library --max-items 50
@@ -75,7 +75,7 @@ from video_library_tool import VocalReplacementPipeline
 pipeline = VocalReplacementPipeline()
 ```
 
-# Setup library with specific sources
+### Setup library with specific sources
 ```python
 pipeline.setup_library(
     sources=["TED Talks", "American Rhetoric Movie Speeches"],
@@ -83,12 +83,12 @@ pipeline.setup_library(
 )
 ```
 
-# Build database
+### Build database
 ```python
 pipeline.build_phrase_database(n_gram=3, model_size="base")
 ```
 
-# Process YouTube video
+### Process YouTube video
 ```python
 output = pipeline.process_youtube_video(
     youtube_url="https://youtube.com/watch?v=VIDEO_ID",
@@ -115,20 +115,13 @@ The tool automatically organizes sounds by category, tags them intelligently, an
 - Timbre: MFCC, chroma features
 - Statistics: Kurtosis, skewness
 
-3. Sound Classification
-- Six main categories with subcategories:
-- TRANSIENT (short, fast attack):
-- Impact, click, pop, snap, crack, glass break, surprised gasp
-- SUSTAINED (medium-long duration):
-- Laughter, scream, cry, vehicle engine, machine hum, alarm
-- DRONE (long, stable):
-- Wind, rumble, hum, buzz, tunnel echo, room tone
-- PERCUSSIVE (rhythmic potential):
-- Drum hit, wood knock, metal clang, hand clap, stomp
-- TONAL (clear pitch):
-- Whistle, bell, chime, singing, musical instrument
-- NOISE (textural):
-- White noise, static, crackle, rain, crowd
+3. Sound Classification : Six main categories with subcategories:
+- TRANSIENT (short, fast attack): Impact, click, pop, snap, crack, glass break, surprised gasp
+- SUSTAINED (medium-long duration) : Laughter, scream, cry, vehicle engine, machine hum, alarm
+- DRONE (long, stable): Wind, rumble, hum, buzz, tunnel echo, room tone
+- PERCUSSIVE (rhythmic potential): Drum hit, wood knock, metal clang, hand clap, stomp
+- TONAL (clear pitch): Whistle, bell, chime, singing, musical instrument
+- NOISE (textural): White noise, static, crackle, rain, crowd
 
 4. Quality Filtering
 - Minimum loudness threshold (-40 LUFS)
@@ -147,14 +140,15 @@ The tool automatically organizes sounds by category, tags them intelligently, an
 6. Deduplication
 - Perceptual hashing using MFCC
 - Prevents duplicate samples in library
-- Advanced Features:
+
+7. Advanced features
 - Library Browser
 - Search by category, subcategory, tags
 - Filter by duration, pitch, uniqueness
 - Statistics generation
 - Sample pack export
 
-## Integration with Previous Tools
+### Integration with Previous Tools
 ```python
 from sound_library import IntegratedSoundExtractor
 extractor = IntegratedSoundExtractor()
@@ -166,7 +160,7 @@ samples = extractor.build_from_video_library("./video_library")
 samples = extractor.download_and_extract("TED Talks", max_videos=20)
 ```
 
-Usage Examples:
+### Usage Examples:
 ```python
 # Build library from video directory
 python sound_library.py build ./video_library --min-uniqueness 0.4
@@ -217,7 +211,7 @@ browser.export_pack(
 - Batch processing
 
 
-Output Structure:
+## Output Structure:
 ```
 sound_library/
 ├── transient/
