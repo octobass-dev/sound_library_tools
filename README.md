@@ -138,7 +138,6 @@ The tool automatically organizes sounds by category, tags them intelligently, an
 - Perceptual uniqueness scoring (0-1)
 
 5. Uniqueness Scoring
-- Factors:
 - Spectral characteristics (40%)
 - Pitch clarity (15%)
 - Onset strength (20%)
@@ -219,6 +218,7 @@ browser.export_pack(
 
 
 Output Structure:
+```
 sound_library/
 ├── transient/
 │   ├── video1_0001_transient_impact.wav
@@ -229,3 +229,4 @@ sound_library/
 │   └── video3_0012_drone_rumble.wav
 ├── library_metadata.json
 └── ...
+```
